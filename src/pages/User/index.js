@@ -32,13 +32,17 @@ export default class Main extends Component {
 
   state = {
     stars: [],
-    loading: false,
     page: 1,
+    loading: false,
     refreshing: false,
   };
 
-  async componentDidMount() {
+  componentDidMount() {
     this.getData();
+
+    this.setState({
+      loading: true,
+    });
   }
 
   getData = async () => {
@@ -46,24 +50,21 @@ export default class Main extends Component {
     const { stars, page } = this.state;
     const user = navigation.getParam('user');
 
-    this.setState({
-      loading: true,
-    });
-
     const response = await api.get(`/users/${user.login}/starred?page=${page}`);
 
     this.setState({
       stars: [...stars, ...response.data],
       loading: false,
       page: page + 1,
+      refreshing: false,
     });
   };
 
   refreshData = () => {
     this.setState({
       stars: [],
-      loading: false,
       page: 1,
+      loading: true,
       refreshing: true,
     });
 
@@ -96,17 +97,9 @@ export default class Main extends Component {
         ) : (
           <Stars
             data={stars}
-            onEndReachedTreshold={0.05}
-            onEndReached={() => {
-              this.getData();
-            }}
+            onEndReachedTreshold={1.0}
+            onEndReached={stars.length === 30 && this.getData}
             onRefresh={this.refreshData}
-            ref={ref => {
-              this.listRef = ref;
-            }}
-            onContentSizeChange={() => {
-              this.scrollToEnd();
-            }}
             refreshing={refreshing}
             keyExtractor={star => String(star.id)}
             renderItem={({ item }) => (
