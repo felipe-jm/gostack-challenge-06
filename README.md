@@ -14,7 +14,7 @@ What I learned:
 * Differences about React and React Native
 * Creating ListViews
 * Pulling to Refresh
-* Infinity Display
+* Infinity Scrolling
 
 ### Run this project
 
