@@ -3,7 +3,9 @@
 ## Understanding the application
 This app allows you to add your favorite users and to follow to what project theirs stars are going.
 
-
+![](gifs/app1.gif)
+![](gifs/app2.gif)
+![](gifs/app3.gif)
 
 What I learned:
 
