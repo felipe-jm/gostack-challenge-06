@@ -4,8 +4,8 @@
 This app allows you to add your favorite users and to follow to what project theirs stars are going.
 
 <div>
-<img src="./gifs/app1.gif" width="200" height="350"/>
-<img src="./gifs/app2.gif" width="200" height="350"/>
+<img src="./gifs/app1.gif" width="200"/>
+<img src="./gifs/app2.gif" width="200"/>
 </div>
 
 ---
